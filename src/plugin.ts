@@ -17,7 +17,7 @@ const defaultConfig: Config = {
   serverEntry: 'src/server/index.tsx',
   buildOutputDir: 'dist-server',
   clientEntry: 'src/client/index.tsx',
-  cssEntry: 'src/styles.css',
+  cssEntry: 'src/style.css',
   serverDirectories: ['src/server/*'],
 }
 

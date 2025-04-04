@@ -46,7 +46,7 @@ You need to place the files as follows.
 
 - `src/server/index.tsx` - Hono application
 - `src/client/index.tsx` - Client entry point
-- `src/styles.css` - CSS file
+- `src/style.css` - CSS file
 
 In addition, the following will be output when building.
 
@@ -69,7 +69,7 @@ export const renderer = reactRenderer(({ children }) => {
         <meta charSet='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <Script />
-        <Link href='/src/styles.css' rel='stylesheet' />
+        <Link href='/src/style.css' rel='stylesheet' />
       </head>
       <body>{children}</body>
     </html>
@@ -92,7 +92,7 @@ Directory structure:
 │   ├── server
 │   │   ├── index.tsx
 │   │   └── renderer.tsx
-│   └── styles.css
+│   └── style.css
 ├── tsconfig.json
 ├── vite.config.ts
 ├── worker-configuration.d.ts

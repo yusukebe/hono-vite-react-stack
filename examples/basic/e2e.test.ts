@@ -19,7 +19,7 @@ test('Should include script and stylesheet tags', async ({ page }) => {
   const scriptTag = page.locator('script[type="module"][src="/src/client/index.tsx"]')
   await expect(scriptTag).toHaveCount(1)
 
-  const linkTag = page.locator('link[rel="stylesheet"][href="/src/styles.css"]')
+  const linkTag = page.locator('link[rel="stylesheet"][href="/src/style.css"]')
   await expect(linkTag).toHaveCount(1)
 })
 
