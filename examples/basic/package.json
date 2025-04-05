@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "wrangler dev dist/index.js",
+    "preview": "$npm_execpath run build && wrangler dev dist/index.js",
     "deploy": "$npm_execpath run build && wrangler deploy dist/index.js",
     "test:e2e": "playwright test -c playwright-vite.config.ts e2e.test.ts"
   },
