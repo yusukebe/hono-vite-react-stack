@@ -11,7 +11,7 @@
     "format": "prettier --check 'src/**/*.{ts,tsx}'",
     "format:fix": "prettier --write 'src/**/*.{ts,tsx}'",
     "publint": "publint",
-    "prerelease": "npm run build",
+    "prerelease": "bun run build",
     "release": "np"
   },
   "files": [
