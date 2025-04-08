@@ -6,14 +6,14 @@ import type { Plugin, PluginOption } from 'vite'
 import ssrHotReload from 'vite-plugin-ssr-hot-reload'
 
 interface Config {
-  serverEntry: string
-  buildOutputDir: string
-  clientEntry: string
-  cssEntry: string
-  serverDirectories: string[]
+  serverEntry?: string
+  buildOutputDir?: string
+  clientEntry?: string
+  cssEntry?: string
+  serverDirectories?: string[]
 }
 
-const defaultConfig: Config = {
+const defaultConfig: Required<Config> = {
   serverEntry: 'src/server/index.tsx',
   buildOutputDir: 'dist-server',
   clientEntry: 'src/client/index.tsx',
@@ -21,7 +21,12 @@ const defaultConfig: Config = {
   serverDirectories: ['src/server/*'],
 }
 
-export function reactStack(config: Config = defaultConfig): PluginOption[] {
+export function reactStack(config: Config = {}): PluginOption[] {
+  const resolvedConfig: Required<Config> = {
+    ...defaultConfig,
+    ...config,
+  }
+
   const configPlugin: Plugin = {
     name: 'hono-vite-react-stack',
     config: (_, env) => {
@@ -33,7 +38,7 @@ export function reactStack(config: Config = defaultConfig): PluginOption[] {
           build: {
             manifest: true,
             rollupOptions: {
-              input: [config.clientEntry, config.cssEntry],
+              input: [resolvedConfig.clientEntry, resolvedConfig.cssEntry],
             },
           },
         }
@@ -56,7 +61,7 @@ export function reactStack(config: Config = defaultConfig): PluginOption[] {
   }
 
   const ssrHotReloadPlugin = ssrHotReload({
-    entry: config.serverDirectories,
+    entry: resolvedConfig.serverDirectories,
     injectReactRefresh: true,
   })
   ssrHotReloadPlugin.apply = (_config, env) => env.command === 'serve'
@@ -66,7 +71,10 @@ export function reactStack(config: Config = defaultConfig): PluginOption[] {
     plugin.apply = (_config, env) => env.command === 'serve'
   }
 
-  const buildPlugin = build({ entry: config.serverEntry, outputDir: config.buildOutputDir })
+  const buildPlugin = build({
+    entry: resolvedConfig.serverEntry,
+    outputDir: resolvedConfig.buildOutputDir,
+  })
 
   buildPlugin.apply = (_config, env) => env.command === 'build' && env.isSsrBuild === true
 
