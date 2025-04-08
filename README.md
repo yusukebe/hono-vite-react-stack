@@ -77,6 +77,45 @@ export const renderer = reactRenderer(({ children }) => {
 })
 ```
 
+## Guides
+
+### Change the client entry point
+
+If you want to change the path of the client entry point, add a `src` attribute to the `Script` component and set the path.
+
+```tsx
+// src/client/main.tsx
+import { Script, Link } from 'hono-vite-react-stack/components'
+
+export const renderer = reactRenderer(({ children }) => {
+  return (
+    <html>
+      <head>
+        {/**  Add src attribute to Script component */}
+        <Script src='/src/client/main.tsx' />
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+})
+```
+
+For the build, you can specify it in the `vite.config.ts`.
+
+```ts
+// vite.config.ts
+import reactStack from 'hono-vite-react-stack'
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  plugins: [
+    reactStack({
+      clientEntry: './src/client/main.tsx',
+    }),
+  ],
+})
+```
+
 ## Example Project
 
 Directory structure:
