@@ -1,7 +1,7 @@
 node_modules
-bun.lock
 .wrangler
 .mf
 *.tgz
 dist
 .DS_Store
+package-lock.json

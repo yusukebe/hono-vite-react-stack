@@ -3,7 +3,7 @@
   "version": "0.1.3",
   "type": "module",
   "scripts": {
-    "test": "npm run test:e2e -w basic",
+    "test": "bun --filter=\"basic\" test:e2e",
     "build": "tsup",
     "watch": "tsup --watch",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
