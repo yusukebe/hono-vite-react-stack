@@ -11,9 +11,6 @@ jobs:
     defaults:
       run:
         working-directory: ./
-    strategy:
-      matrix:
-        node: [20, 22]
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1
