@@ -85,3 +85,10 @@ test('Should contain import statement for react-refresh in inline scripts', asyn
   }
   expect(found).toBe(true)
 })
+
+test('Should return 200 streaming response - /stream', async ({ page }) => {
+  const response = await page.goto('/stream')
+  expect(response?.status()).toBe(200)
+  const contentH1 = await page.textContent('h1')
+  expect(contentH1).toBe('Hello from SSR Streaming')
+})
