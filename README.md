@@ -86,6 +86,7 @@ If you want to change the path of the client entry point, add a `src` attribute 
 ```tsx
 // src/client/main.tsx
 import { Script, Link } from 'hono-vite-react-stack/components'
+import { reactRenderer } from '@hono/react-renderer'
 
 export const renderer = reactRenderer(({ children }) => {
   return (
