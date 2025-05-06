@@ -1,5 +1,8 @@
 import { cloudflare } from '@cloudflare/vite-plugin'
-import build from '@hono/vite-build/cloudflare-workers'
+import build, {
+  defaultOptions as buildPluginDefaultOptions,
+} from '@hono/vite-build/cloudflare-workers'
+import type { CloudflareWorkersBuildOptions } from '@hono/vite-build/cloudflare-workers'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import type { Plugin, PluginOption } from 'vite'
@@ -8,6 +11,7 @@ import ssrHotReload from 'vite-plugin-ssr-hot-reload'
 interface Config {
   serverEntry?: string
   buildOutputDir?: string
+  buildPluginOptions?: CloudflareWorkersBuildOptions
   clientEntry?: string
   cssEntry?: string
   serverDirectories?: string[]
@@ -16,6 +20,7 @@ interface Config {
 const defaultConfig: Required<Config> = {
   serverEntry: 'src/server/index.tsx',
   buildOutputDir: 'dist-server',
+  buildPluginOptions: buildPluginDefaultOptions,
   clientEntry: 'src/client/index.tsx',
   cssEntry: 'src/style.css',
   serverDirectories: ['src/server/*'],
@@ -72,6 +77,7 @@ export function reactStack(config: Config = {}): PluginOption[] {
   }
 
   const buildPlugin = build({
+    ...resolvedConfig.buildPluginOptions,
     entry: resolvedConfig.serverEntry,
     outputDir: resolvedConfig.buildOutputDir,
   })

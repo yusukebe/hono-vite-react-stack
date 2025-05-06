@@ -5,7 +5,7 @@
       "name": "hono-vite-react-stack",
       "dependencies": {
         "@cloudflare/vite-plugin": "^0.1.20",
-        "@hono/vite-build": "^1.5.0",
+        "@hono/vite-build": "^1.6.1",
         "@tailwindcss/vite": "^4.1.1",
         "@vitejs/plugin-react": "^4.3.4",
         "vite-plugin-ssr-hot-reload": "^0.4.1",
@@ -190,7 +190,7 @@
 
     "@hono/react-renderer": ["@hono/react-renderer@1.0.1", "", { "peerDependencies": { "hono": "*", "react": "^19.0.0", "react-dom": "^19.0.0" } }, "sha512-vjQ/70hVrbgsi2O44N7w5sO0v51lRcuXau/4caVzw0A1hje+U2zAnuhiBC3JhX56gGfhGT4kO5B0di4SROx0Lg=="],
 
-    "@hono/vite-build": ["@hono/vite-build@1.5.0", "", { "peerDependencies": { "hono": "*" } }, "sha512-aPQwcRp1j6Av+mI8cPoSSUNHwp+VGAm1uF6KqJGY4ZlCLtu13OgMt/+X5kZpLLlo2wBJqkO1POX/LfjKvc2jBg=="],
+    "@hono/vite-build": ["@hono/vite-build@1.6.1", "", { "peerDependencies": { "hono": "*" } }, "sha512-M60p0cAWgEbYiGa+1j35Ljqcef8s2N5EhpQMWrH1N6fSid5jKD2+D2t1+AntI8HZbgC5VDdpk4QzcEuLMPCgsA=="],
 
     "@humanfs/core": ["@humanfs/core@0.19.1", "", {}, "sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA=="],
 

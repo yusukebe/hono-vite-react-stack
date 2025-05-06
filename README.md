@@ -117,6 +117,36 @@ export default defineConfig({
 })
 ```
 
+### Durable Objects
+
+Building a project using DurableObjects requires some additional steps. If you have exported a DurableObjects class named `MyDurableObject` from `./src/server/do.ts`, write `vite.config.ts` as follows. This is a bit of a hack.
+
+```ts
+// vite.config.ts
+import reactStack from 'hono-vite-react-stack'
+import { defineConfig } from 'vite'
+import { defaultOptions as buildDefaultOptions } from '@hono/vite-build/cloudflare-workers'
+
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      external: ['cloudflare:workers'],
+    },
+  },
+  plugins: [
+    reactStack({
+      buildPluginOptions: {
+        entryContentAfterHooks: [
+          ...buildDefaultOptions.entryContentAfterHooks,
+          () => `export { MyDurableObject } from "/src/server/do"`,
+        ],
+        entryContentDefaultExportHook: buildDefaultOptions.entryContentDefaultExportHook,
+      },
+    }),
+  ],
+})
+```
+
 ## Example Project
 
 Directory structure:
