@@ -1,5 +1,12 @@
 # hono-vite-react-stack
 
+> [!CAUTION]
+> This library is deprecated. Please use [vite-ssr-components](https://github.com/yusukebe/vite-ssr-components) instead for a more modern and efficient approach to SSR with Vite.
+>
+> See the [Migration Guide](#migration-to-vite-ssr-components) below for instructions on how to migrate.
+
+---
+
 **_hono-vite-react-stack_** is a Vite plugin for creating web apps that run on Cloudflare Workers using Hono and React. The stack consists of the following.
 
 - **Hono** - Web application framework for server-side rendering with React. It is also possible to create APIs.
@@ -216,6 +223,43 @@ Commands:
 ```
 
 See more: https://github.com/yusukebe/hono-vite-react-stack-example
+
+## Migration to vite-ssr-components
+
+To migrate to the new [vite-ssr-components](https://github.com/yusukebe/vite-ssr-components) library:
+
+1. **Install the new library**:
+
+   ```bash
+   npm uninstall hono-vite-react-stack
+   npm i -D vite-ssr-components
+   ```
+
+2. **Update your vite.config.ts**:
+
+   ```ts
+   // Before
+   import reactStack from 'hono-vite-react-stack'
+
+   // After
+   import ssrPlugin from 'vite-ssr-components/plugin'
+
+   export default defineConfig({
+     plugins: [ssrPlugin()],
+   })
+   ```
+
+3. **Update component imports**:
+
+   ```ts
+   // Before
+   import { Script, Link } from 'hono-vite-react-stack/components'
+
+   // After
+   import { Script, Link, ViteClient } from 'vite-ssr-components/react'
+   ```
+
+For detailed migration instructions and new features, please refer to the [vite-ssr-components documentation](https://github.com/yusukebe/vite-ssr-components).
 
 ## Author
 
